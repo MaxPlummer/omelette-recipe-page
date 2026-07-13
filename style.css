@@ -24,14 +24,19 @@ body {
   min-height: 100dvh;
   margin: 0;
 }
+hr {
+  border-top: 1px solid hsl(30, 18%, 87%);
+  margin: 0;
+}
 article.recipe-container {
+  display: grid;
   background-color: hsl(0, 0%, 100%);
   padding: 2rem;
+  gap: 2rem;
 }
 img.omelette {
   display: block;
-  /* Extends the image beyond the container padding */
-  width: calc(100% + 4rem);
+  width: calc(100% + 4rem); /* Extends the image beyond the container padding */
   margin: -2rem -2rem 0 -2rem;
 }
 .prep-time-container {
@@ -45,16 +50,40 @@ h1 {
   font-family: "Young Serif", serif;
   font-weight: 400;
   font-size: 2.25rem;
+  line-height: 100%;
+  margin-top: 2.5rem;
 }
 h2 {
   color: hsl(14, 45%, 36%);
   font-family: "Young Serif", serif;
   font-weight: 400;
   font-size: 1.75rem;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
 }
 h3 {
   color: hsl(332, 51%, 32%);
   margin: 0;
+}
+ul {
+  list-style: none;
+  padding: 0 0.5rem;
+  margin-bottom: 0.33rem;
+}
+.centered-li {
+  display: flex;
+  align-items: center; /* Vertically center bullet with text block */
+  gap: 1.5rem;
+  margin-bottom: 10px;
+}
+.centered-li::before {
+  content: "\2022"; /* Bullet symbol */
+  font-size: 1.5rem; /* Adjusts bullet size */
+  color: hsl(14, 45%, 36%);
+  line-height: 100%; /* Prevent extra height from throwing off center */
+}
+.centered-li:last-child {
+  margin-bottom: 0; /* Remove extra space from last list item */
 }
 .attribution {
   font-size: 0.6875rem;
