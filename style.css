@@ -19,6 +19,7 @@
 body {
   font-family: "Outfit", sans-serif;
   font-size: 16px;
+  line-height: 150%;
   color: hsl(30, 10%, 34%);
   background-color: hsl(30, 54%, 90%);
   min-height: 100dvh;
@@ -34,10 +35,15 @@ article.recipe-container {
   padding: 2rem;
   gap: 2rem;
 }
-img.omelette {
+figure.omelette {
   display: block;
   width: calc(100% + 4rem); /* Extends the image beyond the container padding */
+  line-height: 0;
   margin: -2rem -2rem 0 -2rem;
+}
+figure img {
+  width: 100%;
+  height: auto;
 }
 .prep-time-container {
   background-color: hsl(330, 100%, 98%);
@@ -58,37 +64,109 @@ h2 {
   font-family: "Young Serif", serif;
   font-weight: 400;
   font-size: 1.75rem;
+  line-height: 100%;
   margin-top: 0;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 h3 {
   color: hsl(332, 51%, 32%);
+  line-height: 100%;
   margin: 0;
 }
 ul {
   list-style: none;
   padding: 0 0.5rem;
-  margin-bottom: 0.33rem;
+  margin-bottom: 0;
 }
-.centered-li {
+ul li {
   display: flex;
   align-items: center; /* Vertically center bullet with text block */
   gap: 1.5rem;
   margin-bottom: 10px;
 }
-.centered-li::before {
+ul li::before {
   content: "\2022"; /* Bullet symbol */
-  font-size: 1.5rem; /* Adjusts bullet size */
+  font-weight: 700;
   color: hsl(14, 45%, 36%);
   line-height: 100%; /* Prevent extra height from throwing off center */
 }
-.centered-li:last-child {
+ul li:last-child {
   margin-bottom: 0; /* Remove extra space from last list item */
 }
+ol {
+  counter-reset: list-counter;
+  margin-bottom: 0;
+}
+ol li {
+  list-style: none; /* Hide default marker to use variable font */
+  counter-increment: list-counter;
+  margin-bottom: 0.67rem;
+}
+
+ol li::before {
+  content: counter(list-counter) "."; /* Mimic default ol marker */
+  font-weight: 700;
+  color: hsl(14, 45%, 36%);
+  position: absolute;
+  margin-left: -2rem;
+}
+ol li:last-child {
+  margin-bottom: 0;
+}
+table.nutrition-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+caption {
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+th,
+td {
+  border-bottom: 1px solid hsl(30, 18%, 87%);
+}
+th {
+  font-weight: 400;
+  padding: 1rem 0rem 1rem 2rem;
+}
+td {
+  color: hsl(14, 45%, 36%);
+  font-weight: 700;
+  padding: 1rem 2rem;
+}
+/* Remove bottom border from last row */
+table.nutrition-table tbody tr:last-child th,
+table.nutrition-table tbody tr:last-child td {
+  border-bottom: none;
+}
 .attribution {
+  background-color: hsl(0, 0%, 100%);
   font-size: 0.6875rem;
   text-align: center;
+  padding-bottom: 1rem;
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+@media (min-width: 650px) {
+  article.recipe-container {
+    width: 60%;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 5rem auto 3rem;
+  }
+  figure.omelette {
+    width: 100%;
+    margin: auto;
+  }
+  figure img {
+    border-radius: 10px;
+  }
+  h1 {
+    margin-top: 2rem;
+  }
+  .attribution {
+    background-color: hsl(30, 54%, 90%);
+  }
 }
